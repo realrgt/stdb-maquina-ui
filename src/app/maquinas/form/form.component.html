@@ -1,0 +1,63 @@
+<div class="container">
+  <article id="head">
+    <p>Olá,</p>
+    <p>Pronto para encontrar a sua máquina?</p>
+  </article>
+  <article id="personal-data" class="mt-4">
+    <form [formGroup]="form">
+      <span>Por favor preencha os seus dados pessoais</span>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control mb-2" id="exampleFormControlInput1" placeholder="Nome completo"
+          formControlName="nome" [ngClass]="{ 'is-invalid': submitted && hasError('nome') }" />
+        <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+          Nome eh obrigatorio!
+        </div>
+        <input type="email" class="form-control mb-2" id="exampleFormControlInput1" placeholder="exemplo@domain.com"
+          formControlName="email" [ngClass]="{ 'is-invalid': submitted && hasError('email') }" />
+        <div class="invalid-feedback" *ngIf="hasError('email') && hasError('email')['email']">
+          Email invalido!
+        </div>
+        <div class="invalid-feedback" *ngIf="hasError('email') && hasError('email')['required']">
+            Email eh obrigatorio!
+          </div>
+        <input type="tel" class="form-control mb-2" id="exampleFormControlInput1" placeholder="Contacto"
+          formControlName="contato" [ngClass]="{ 'is-invalid': submitted && hasError('contato') }" />
+          <div class="invalid-feedback" *ngIf="hasError('contato') && hasError('contato')['required']">
+              Contato obrigatorio
+          </div>
+        <div class="invalid-feedback" *ngIf="hasError('contato') && hasError('contato')['minlength']">
+          Contato ter 9 digitos.
+        </div>
+        <div class="invalid-feedback" *ngIf="hasError('contato') && hasError('contato')['maxlength']">
+          Contato ter 9 digitos.
+        </div>
+        <input type="number" class="form-control mb-2" id="exampleFormControlInput1" placeholder="Montante disponivel"
+          formControlName="montante" [ngClass]="{ 'is-invalid': submitted && hasError('montante') }" />
+        <div class="invalid-feedback" *ngIf="hasError('montante') && hasError('montante')['required']">
+            Montante eh obrigatorio!
+        </div>
+        <div class="invalid-feedback" *ngIf="hasError('montante') && hasError('montante')['min']">
+            Montante minimo deve ser 100000!
+        </div>
+      </div>
+
+      <p class="text-muted mb-2">Modalidade de Pagamento</p>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+        <label class="form-check-label" for="inlineCheckbox1">Pagemento directo</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input mb-4" type="checkbox" id="inlineCheckbox2" value="option2" />
+        <label class="form-check-label mb-4" for="inlineCheckbox2">Leasing</label>
+      </div>
+      <br />
+      <button type="button" class="btn btn-primary btn-lg" (click)="onClick()">
+        Pesquisar
+      </button>
+      <button type="button" class="btn btn-danger btn-lg" (click)="onClear()">
+        Limpar
+      </button>
+    </form>
+  </article>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <p>Veja as <span>máquinas</span> que encontramos para si</p>
+  <hr class="big-line">
+
+  <div class="row my-4">
+    <div id="list" class="col-sm-4" *ngFor="let maquina of maquinas">
+
+      <div class="card">
+        <div class="m-5">
+          <img src="http://localhost:8080/carros/{{ maquina.image.id }}" class="card-img-top">
+        </div>
+      </div>
+      <div class="mb-4 mt-2">
+        <span class="text-muted">{{ maquina.modelo }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="small-line">
+  <p class="footer mt-n2">Todos direitos reservados. Standard Bank SA, 2019</p>
+</div>
