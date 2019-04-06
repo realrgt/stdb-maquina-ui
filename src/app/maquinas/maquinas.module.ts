@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FormComponent, ListComponent, NotFoundComponent],
@@ -13,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     HttpClientModule
   ]
 })

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MaquinasService } from 'src/app/shared/maquinas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +14,11 @@ export class FormComponent implements OnInit {
   form: FormGroup;
   submitted: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private maquinasService: MaquinasService
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -24,10 +30,18 @@ export class FormComponent implements OnInit {
 
   }
 
-  public onClick() {
+  public onSearch() {
     this.submitted = true;
     console.log(this.form.value);
-    this.form.reset();
+
+    const montante = this.form.value.montante;
+    console.log(montante);
+
+    this.maquinasService.setMontante(montante);
+
+    if (this.form.valid) {
+      this.router.navigate(['/list']);
+    }
   }
 
   onClear() {
