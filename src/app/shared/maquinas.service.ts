@@ -30,4 +30,11 @@ export class MaquinasService {
     return this.montante;
   }
 
+  getTipoPagamento() {
+    return [
+      {valor: 'Direto', desc: 'Sim'},
+      {valor: 'Leasing', desc: 'Nao'}
+    ];
+  }
+
 }

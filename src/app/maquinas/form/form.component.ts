@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
 
   form: FormGroup;
   submitted: boolean = false;
+  tipoPagamento: any[];
 
   constructor(
     private fb: FormBuilder,
@@ -21,11 +22,15 @@ export class FormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.tipoPagamento = this.maquinasService.getTipoPagamento();
+
     this.form = this.fb.group({
       nome: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       contato: [null, [Validators.required, Validators.maxLength(9), Validators.minLength(9)]],
-      montante: [null, [Validators.min(100000), Validators.required]]
+      montante: [null, [Validators.min(100000), Validators.required]],
+      pagamento: [null, [Validators.required]]
     });
 
   }
